@@ -25,7 +25,7 @@ const Paragraph = styled.p`
     padding: 0 .3rem;
     overflow: hidden;
     font-size: 0.8rem;
-    font-weight: ${props => props.priority ? 'bold' : 'auto'};
+    font-weight: ${props => props.priority ? 'bold' : '300'};
     text-decoration: ${props => props.done ? 'line-through' : 'auto'};
     &.dateIsOver {
       color: rgba(236, 19, 19, .8);
