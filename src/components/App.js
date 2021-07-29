@@ -81,20 +81,24 @@ function App() {
   }
 
   const changeSelect = () => {
-    switch (select) {
-      case 'abc':
-          setTasks(tasks => tasks.sort((a, b) => a.name.localeCompare(b.name)));
-        break;
+    if(select === "abc"){      
+        const newTasks = tasks.sort((a, b) => {
+          return a.name.localeCompare(b.name)
+        })
+        setTasks([...newTasks]);
 
-      case 'dataUp':
-          setTasks(tasks => tasks.sort((a,b) => new Date(a.date) - new Date(b.date)))
-        break;
+    } if(select === "dataUp"){
+        const newTasks = tasks.sort((a,b) => {
+          return new Date(a.date) - new Date(b.date)
+        });
+        setTasks([...newTasks])
 
-      case 'dataDown':
-          setTasks(tasks => tasks.sort((a,b) => new Date(b.date) - new Date(a.date)))
-        break;
+    } else if (select === "dataDown") {
+        const newTasks = tasks.sort((a,b) => {
+          return new Date(b.date) - new Date(a.date)
+        });
+        setTasks([...newTasks])
 
-      default:
     }
   }
 
