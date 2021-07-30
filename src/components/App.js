@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 
@@ -80,30 +80,26 @@ function App() {
     setSelect(e.target.value)
   }
 
-  const changeSelect = () => {
+  useEffect(() => {
     if(select === "abc"){      
-        const newTasks = tasks.sort((a, b) => {
-          return a.name.localeCompare(b.name)
-        })
-        setTasks([...newTasks]);
+      const newTasks = tasks.sort((a, b) => {
+        return a.name.localeCompare(b.name)
+      })
+      setTasks([...newTasks]);
 
-    } if(select === "dataUp"){
-        const newTasks = tasks.sort((a,b) => {
-          return new Date(a.date) - new Date(b.date)
-        });
-        setTasks([...newTasks])
+  } if(select === "dataUp"){
+      const newTasks = tasks.sort((a,b) => {
+        return new Date(a.date) - new Date(b.date)
+      });
+      setTasks([...newTasks])
 
-    } else if (select === "dataDown") {
-        const newTasks = tasks.sort((a,b) => {
-          return new Date(b.date) - new Date(a.date)
-        });
-        setTasks([...newTasks])
-
-    }
+  } else if (select === "dataDown") {
+      const newTasks = tasks.sort((a,b) => {
+        return new Date(b.date) - new Date(a.date)
+      });
+      setTasks([...newTasks])
   }
-
-
-  localStorage.setItem("obj", JSON.stringify(tasks));
+  }, [select])
 
   const showMessage = () => {
     setMessage(!message);
@@ -117,6 +113,8 @@ function App() {
   const switchOff = () => {
     setMessage(false);
   }
+
+  localStorage.setItem("obj", JSON.stringify(tasks));  
   
   return (
     <Container>
@@ -134,7 +132,6 @@ function App() {
       <SelectSort 
         value={select}
         handleSelect={handleSelect}
-        changeSelect={changeSelect}
         showMessage={showMessage}
       />
       <TaskList

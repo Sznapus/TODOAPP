@@ -9,7 +9,7 @@ const Container = styled.div`
 `
 
 
-const SelectSort = ({ value, handleSelect, changeSelect, showMessage }) => {
+const SelectSort = ({ value, handleSelect, showMessage }) => {
     return ( 
         <Container>
             <label htmlFor="sort">Sortuj według:</label>
@@ -18,7 +18,6 @@ const SelectSort = ({ value, handleSelect, changeSelect, showMessage }) => {
                 id="sort" 
                 value={value} 
                 onChange={handleSelect} 
-                onClick={changeSelect} 
                 >
                 <option value="abc">Alfabetu</option>
                 <option value="dataUp">Daty rosnąco</option>
