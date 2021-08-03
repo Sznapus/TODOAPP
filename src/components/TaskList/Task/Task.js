@@ -20,7 +20,9 @@ const Container = styled.div`
     color: gray;
 `
 const Paragraph = styled.p`
-  display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     padding: 0 .3rem;
     overflow: hidden;
@@ -50,8 +52,8 @@ const animationBell = keyframes`
 `
 
 const OnBell = styled(BiBell)`
-  min-width: 5%;
-  min-height: 5%;
+  min-width: 8%;
+  min-height: 8%;
   margin: 0 5px;
   color: rgb(240, 240, 240);
   animation: ${animationBell} 2s infinite;
